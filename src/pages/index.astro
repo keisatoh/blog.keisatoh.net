@@ -9,22 +9,20 @@ const posts = await Astro.glob('../pages/posts/*.md');
     <meta charset="utf-8" />
   </head>
   <body>
+    <h1>
+      <a href="/">blog.keisatoh.net</a>
+    </h1>
     <main>
-      <h1>
-        <a href="/">blog.keisatoh.net</a>
-      </h1>
-      <div>
-        {
-          posts.map((post) => (
-            <article>
-              <h2>
-                <a href={post.url}>{post.frontmatter.title}</a>
-              </h2>
-              <p>{post.frontmatter.description}</p>
-            </article>
-          ))
-        }
-      </div>
+      {
+        posts.map((post) => (
+          <article>
+            <h2>
+              <a href={post.url}>{post.frontmatter.title}</a>
+            </h2>
+            <p>{post.frontmatter.description}</p>
+          </article>
+        ))
+      }
     </main>
   </body>
 </html>
