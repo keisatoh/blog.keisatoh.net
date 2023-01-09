@@ -20,7 +20,7 @@ const posts = await Astro.glob('../pages/posts/*.md');
       <main class="py-10">
         {
           posts.map((post) => (
-            <article class="mt-10">
+            <article class="[&:nth-child(n+2)]:mt-10">
               <time datetime={post.frontmatter.date}>
                 {new Date(post.frontmatter.date).toLocaleDateString('ja-JP', {
                   year: 'numeric',
