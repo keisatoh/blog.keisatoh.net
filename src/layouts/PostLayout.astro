@@ -1,0 +1,55 @@
+---
+export interface Props {
+  content: {
+    title: string;
+    date: string;
+    description?: string;
+    dek?: string;
+  };
+}
+const {
+  content: { title, date, description, dek },
+} = Astro.props;
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <article class="prose lg:prose-lg mx-auto px-4 py-8 lg:py-16">
+        <div class="not-prose">
+          <time datetime={date} class="text-sm md:text-base">
+            {
+              new Date(date).toLocaleDateString('ja-JP', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })
+            }
+          </time>
+          <h1 class="text-black text-3xl font-normal md:text-5xl mt-1">
+            {title}
+          </h1>
+          <div
+            class="text-slate-600 tracking-tight text-base md:text-xl mx-auto max-w-4xl mt-2 md:mt-6"
+          >
+            {dek}
+          </div>
+        </div>
+        <div class="mt-12 md:mt-16">
+          <slot />
+        </div>
+      </article>
+      <footer class="py-10">
+        <div class="text-center">
+          &copy; {new Date().getFullYear()} keisatoh
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
