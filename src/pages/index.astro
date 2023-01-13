@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 const posts = await Astro.glob('../pages/posts/*.md');
 ---
 
@@ -38,11 +40,7 @@ const posts = await Astro.glob('../pages/posts/*.md');
           ))
         }
       </main>
-      <footer class="py-10">
-        <div class="text-center">
-          &copy; {new Date().getFullYear()} keisatoh
-        </div>
-      </footer>
+      <Footer />
     </div>
   </body>
 </html>

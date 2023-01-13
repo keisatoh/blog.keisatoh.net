@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro';
+
 export interface Props {
   content: {
     title: string;
@@ -45,11 +47,7 @@ const {
           <slot />
         </div>
       </article>
-      <footer class="py-10">
-        <div class="text-center">
-          &copy; {new Date().getFullYear()} keisatoh
-        </div>
-      </footer>
+      <Footer />
     </main>
   </body>
 </html>
