@@ -15,7 +15,7 @@ const posts = await Astro.glob('../pages/posts/*.md');
   <body>
     <div class="container mx-auto max-w-4xl px-6">
       <header class="py-10">
-        <h1 class="text-xl sm:text-3xl font-medium">
+        <h1 class="text-xl font-medium sm:text-3xl">
           <a href="/">blog.keisatoh.net</a>
         </h1>
       </header>
@@ -30,10 +30,10 @@ const posts = await Astro.glob('../pages/posts/*.md');
                   day: 'numeric',
                 })}
               </time>
-              <h2 class="text-xl sm:text-3xl mt-2 font-normal">
+              <h2 class="mt-2 text-xl font-normal sm:text-3xl">
                 <a href={post.url}>{post.frontmatter.title}</a>
               </h2>
-              <p class="mt-3 text-slate-600 text-sm font-normal sm:text-lg">
+              <p class="mt-3 text-sm font-normal text-slate-600 sm:text-lg">
                 {post.frontmatter.description}
               </p>
             </article>
