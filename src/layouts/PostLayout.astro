@@ -1,5 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
+import GoBackButton from '../components/GoBackButton.astro';
 
 export interface Props {
   content: {
@@ -23,6 +24,9 @@ const {
   </head>
   <body>
     <main>
+      <div class="p-3 sm:p-5 mt-3 text-center">
+        <GoBackButton />
+      </div>
       <article class="prose lg:prose-lg mx-auto px-4 py-8 lg:py-16">
         <div class="not-prose">
           <time datetime={date} class="text-sm md:text-base">
@@ -47,6 +51,9 @@ const {
           <slot />
         </div>
       </article>
+      <div class="p-3 sm:p-5 mt-3 text-center">
+        <GoBackButton />
+      </div>
       <Footer />
     </main>
   </body>
