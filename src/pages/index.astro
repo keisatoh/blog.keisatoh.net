@@ -1,5 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../config';
 import { getExcerpt } from '../utils';
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from '../types';
@@ -13,10 +15,7 @@ const excerpt = (post: MarkdownInstance<Frontmatter>) => {
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>blog.keisatoh.net</title>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
     <div class="container mx-auto max-w-4xl px-6">
