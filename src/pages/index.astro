@@ -26,7 +26,7 @@ const excerpt = (post: MarkdownInstance<Frontmatter>) => {
   <body>
     <div class="container mx-auto max-w-4xl px-6">
       <header class="py-10">
-        <h1 class="text-xl font-medium sm:text-3xl">
+        <h1 class="text-xl font-medium text-black sm:text-3xl">
           <a href="/">{SITE_TITLE}</a>
         </h1>
       </header>
@@ -34,17 +34,17 @@ const excerpt = (post: MarkdownInstance<Frontmatter>) => {
         {
           posts.map((post) => (
             <article class="[&:nth-child(n+2)]:mt-10">
-              <time datetime={post.frontmatter.date}>
+              <time datetime={post.frontmatter.date} class="text-black">
                 {new Date(post.frontmatter.date).toLocaleDateString('ja-JP', {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric',
                 })}
               </time>
-              <h2 class="mt-2 text-xl font-normal sm:text-3xl">
+              <h2 class="mt-2 text-xl font-normal hover:text-indigo-700 sm:text-3xl">
                 <a href={post.url}>{post.frontmatter.title}</a>
               </h2>
-              <p class="mt-3 text-sm font-normal text-slate-600 sm:text-lg">
+              <p class="mt-3 text-sm font-normal text-slate-700 sm:text-lg">
                 {post.frontmatter.dek || excerpt(post)}
               </p>
             </article>
