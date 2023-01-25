@@ -1,0 +1,48 @@
+<div class="flex items-center justify-center justify-items-center">
+  <a
+    class="twitter-share-button"
+    href="https://twitter.com/intent/tweet"
+    data-size="large">ツイート</a
+  >
+  <a href="https://www.buymeacoffee.com/keisatoh" target="_blank"
+    ><img
+      src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+      alt="Buy Me A Coffee"
+      class="!my-0 ml-3 h-9"
+    /></a
+  >
+</div>
+<script>
+  // Twitter公式ドキュメントのスニペット: https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+  window.twttr = (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = 'https://platform.twitter.com/widgets.js';
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
+
+    return t;
+  })(document, 'script', 'twitter-wjs');
+</script>
+
+<script
+  type="text/javascript"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+  data-name="bmc-button"
+  data-slug="keisatoh"
+  data-color="#FFDD00"
+  data-emoji=""
+  data-font="Cookie"
+  data-text="Buy me a coffee"
+  data-outline-color="#000000"
+  data-font-color="#000000"
+  data-coffee-color="#ffffff"
+></script>
