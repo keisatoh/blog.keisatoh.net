@@ -4,6 +4,7 @@ title: "学割でGitHub Copilotを使い始めた"
 date: "2023-04-10"
 description: "学割を利用して、GitHub Copilotを使い始めた。その登録方法のメモ。"
 dek: "いかれた使い心地"
+ogImage: "https://i.imgur.com/RdfrUBM.jpg"
 ---
 
 新年度が始まり、最初のホームルームがあり、今年度用の学生証を受け取ってすぐ、嬉々としてGitHubのGitHub Global Campusに登録した。これにより受け取れるGitHub Student Developer Packのなかに、GitHub Copilotの無料サブスクリプションがあるためです。
