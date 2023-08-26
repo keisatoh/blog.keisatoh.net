@@ -1,0 +1,15 @@
+---
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<header class="prose mx-auto w-full py-4 lg:prose-lg">
+  <div class="not-prose">
+    <h1 class="text-2xl font-medium text-black">
+      <a href="/">{title}</a>
+    </h1>
+  </div>
+</header>

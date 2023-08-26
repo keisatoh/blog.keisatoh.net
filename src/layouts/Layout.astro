@@ -1,0 +1,28 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../../config';
+import Header from '../components/Header.astro';
+
+type Props = {
+  title: string;
+  description: string;
+  ogImage?: string;
+};
+
+const { title, description, ogImage } = Astro.props as Props;
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={title} description={description} ogImage={ogImage} />
+  </head>
+  <!-- flexは、コンテンツ量が少ないときのフッター最下部固定のため -->
+  <body class="flex min-h-screen flex-col px-3 py-6">
+    <Header title={SITE_TITLE} />
+    <main class="mt-10 flex-auto">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
