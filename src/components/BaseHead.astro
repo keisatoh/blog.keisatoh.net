@@ -1,6 +1,7 @@
 ---
 import type { Meta } from '../types';
 import { generateBlogPostingSchema, generateWebSiteSchema } from '../utils/jsonld';
+import { X_HANDLE } from '../../config';
 export type Props = Meta;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -39,7 +40,7 @@ const jsonLd = date
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:creator" content="@passincat" />
+<meta property="twitter:creator" content={X_HANDLE} />
 
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />

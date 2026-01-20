@@ -14,7 +14,7 @@ export function generateBlogPostingSchema(params: BlogPostingParams) {
     '@type': 'BlogPosting',
     headline: params.title,
     description: params.description,
-    image: params.image,
+    ...(params.image ? { image: params.image } : {}),
     datePublished: params.date,
     author: {
       '@type': 'Person',
@@ -40,9 +40,5 @@ export function generateWebSiteSchema() {
     name: SITE_TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
-    author: {
-      '@type': 'Person',
-      name: AUTHOR_NAME,
-    },
   };
 }
