@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: "残りの学生生活をどう過ごすか"
 date: "2023-08-31"
 dek: "残り半年になった学生生活の過ごし方について考えている"

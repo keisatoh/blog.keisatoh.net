@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: "Astroでブログをつくった"
 date: "2023-01-29"
 description: "Astro + Tailwind CSSでブログを作成した。Astroでブログを作成するのは、ずいぶん楽で、おすすめできる。"

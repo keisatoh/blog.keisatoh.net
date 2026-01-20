@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PostLayout.astro
 title: "学割でGitHub Copilotを使い始めた"
 date: "2023-04-10"
 description: "学割を利用して、GitHub Copilotを使い始めた。その登録方法のメモ。"

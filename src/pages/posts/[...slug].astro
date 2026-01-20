@@ -1,20 +1,23 @@
 ---
-import GoBackButton from '../components/GoBackButton.astro';
-import SocialButtons from '../components/SocialButtons.astro';
-import { getExcerpt } from '../utils';
-import type { Frontmatter } from '../types';
-import Layout from './Layout.astro';
+import { getCollection } from 'astro:content';
+import GoBackButton from '../../components/GoBackButton.astro';
+import SocialButtons from '../../components/SocialButtons.astro';
+import { getExcerpt } from '../../utils';
+import Layout from '../../layouts/Layout.astro';
 
-const html = await Astro.slots.render('default');
-const excerpt = getExcerpt(html, 150);
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
 
-const {
-  title,
-  date,
-  description = excerpt,
-  dek,
-  ogImage,
-} = Astro.props.content as Frontmatter;
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const { title, date, dek, ogImage } = post.data;
+const description = post.data.description || getExcerpt(post.body, 150);
 ---
 
 <Layout title={title} description={description} ogImage={ogImage} date={date}>
@@ -41,7 +44,7 @@ const {
       </div>
     </div>
     <div class="mt-12 font-light">
-      <slot />
+      <Content />
     </div>
     <div class="mt-14">
       <SocialButtons />

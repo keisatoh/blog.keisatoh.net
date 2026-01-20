@@ -1,11 +1,3 @@
-type Frontmatter = {
-  title: string;
-  date: string;
-  description?: string;
-  dek?: string;
-  ogImage?: string;
-};
-
 type Meta = {
   title: string;
   description: string;
@@ -13,4 +5,4 @@ type Meta = {
   date?: string;
 };
 
-export type { Frontmatter, Meta };
+export type { Meta };

@@ -1,21 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../config';
 import { getExcerpt } from '../utils';
-import type { MarkdownInstance } from 'astro';
-import type { Frontmatter } from '../types';
 import Layout from '../layouts/Layout.astro';
 
-const postModules = import.meta.glob<MarkdownInstance<Frontmatter>>('./posts/*.md', { eager: true });
-const posts = Object.values(postModules).sort(
+const posts = (await getCollection('posts')).sort(
   (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+    new Date(b.data.date).valueOf() -
+    new Date(a.data.date).valueOf()
 );
-
-const excerpt = (post: MarkdownInstance<Frontmatter>) => {
-  const html = post.compiledContent();
-  return getExcerpt(html, 80);
-};
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -24,18 +17,18 @@ const excerpt = (post: MarkdownInstance<Frontmatter>) => {
       {
         posts.map((post) => (
           <article class="[&:nth-child(n+2)]:mt-10">
-            <time datetime={post.frontmatter.date} class="text-gray text-sm">
-              {new Date(post.frontmatter.date).toLocaleDateString('ja-JP', {
+            <time datetime={post.data.date} class="text-gray text-sm">
+              {new Date(post.data.date).toLocaleDateString('ja-JP', {
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric',
               })}
             </time>
             <h2 class="mt-1 text-xl font-normal text-black hover:text-indigo-700 sm:mt-2 sm:text-3xl">
-              <a href={post.url}>{post.frontmatter.title}</a>
+              <a href={`/posts/${post.id.replace(/\.md$/, '')}/`}>{post.data.title}</a>
             </h2>
             <p class="text-gray mt-2 text-base font-light sm:mt-3 sm:text-lg">
-              {post.frontmatter.dek || excerpt(post)}
+              {post.data.dek || getExcerpt(post.body, 80)}
             </p>
           </article>
         ))
