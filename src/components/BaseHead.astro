@@ -1,9 +1,20 @@
 ---
 import type { Meta } from '../types';
+import { generateBlogPostingSchema, generateWebSiteSchema } from '../utils/jsonld';
 export type Props = Meta;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description, ogImage = '/placeholder-social.jpg' } = Astro.props;
+const { title, description, ogImage = '/placeholder-social.jpg', date } = Astro.props;
+
+const jsonLd = date
+  ? generateBlogPostingSchema({
+      title,
+      description,
+      date,
+      url: canonicalURL.toString(),
+      image: new URL(ogImage, Astro.url).toString(),
+    })
+  : generateWebSiteSchema();
 ---
 
 <!-- Global Metadata -->
@@ -28,7 +39,9 @@ const { title, description, ogImage = '/placeholder-social.jpg' } = Astro.props;
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:creator" content="@passincat" />
 
 <!-- RSS -->
 <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
