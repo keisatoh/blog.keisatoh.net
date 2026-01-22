@@ -18,9 +18,10 @@ const { Content } = await post.render();
 
 const { title, date, dek, ogImage } = post.data;
 const description = post.data.description || getExcerpt(post.body, 150);
+const ogImageSrc = ogImage?.src;
 ---
 
-<Layout title={title} description={description} ogImage={ogImage} date={date}>
+<Layout title={title} description={description} ogImage={ogImageSrc} date={date}>
   <article
     class="prose mx-auto prose-p:tracking-tighter prose-a:break-all hover:prose-a:text-indigo-700 lg:prose-lg"
   >

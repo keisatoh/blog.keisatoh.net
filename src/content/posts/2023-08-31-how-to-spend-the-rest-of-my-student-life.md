@@ -2,9 +2,9 @@
 title: "残りの学生生活をどう過ごすか"
 date: "2023-08-31"
 dek: "残り半年になった学生生活の過ごし方について考えている"
-ogImage: "https://i.imgur.com/VaINuhX.jpg"
+ogImage: "../../assets/posts/student-life/VaINuhX.avif"
 ---
-![青色の本の表紙](https://i.imgur.com/VaINuhX.webp)
+![青色の本の表紙](../../assets/posts/student-life/VaINuhX.avif)
 
 学生最後の夏休みが終わる。それがめっちゃ悲しい。ひどい猛暑がだんだんと姿を消すこの頃、かわりに秋を連れてこようとする赤とんぼを、こんなに寂しい目で眺めるのは最初で最後だろう。そもそも「最後の夏休みをどう過ごすか」みたいなブログを書こうとしていたら、夏休みが終わってしまったのです。これからの半年もそういうふうに過ぎていってしまうなら、残りの学生生活をどう過ごすか。
 
