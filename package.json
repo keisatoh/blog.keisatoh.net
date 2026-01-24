@@ -14,11 +14,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/svelte": "^7.2.5",
     "astro": "^5.16.11",
-    "svelte": "^5.46.4"
+    "svelte": "^5.46.4",
+    "wrangler": "^4.60.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
