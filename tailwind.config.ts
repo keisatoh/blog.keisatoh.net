@@ -1,11 +1,14 @@
-module.exports = {
+import type { Config } from 'tailwindcss';
+import typography from '@tailwindcss/typography';
+
+export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       colors: {
         gray: '#888888',
       },
-      typography: (theme) => ({
+      typography: (theme: (path: string) => string) => ({
         DEFAULT: {
           css: {
             blockquote: {
@@ -14,7 +17,6 @@ module.exports = {
               marginTop: '36px',
               marginBottom: '36px',
               paddingLeft: '20px',
-              fontWeight: '400',
             },
             'blockquote p:first-of-type::before': {
               content: '',
@@ -27,5 +29,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
-};
+  plugins: [typography],
+} satisfies Config;
