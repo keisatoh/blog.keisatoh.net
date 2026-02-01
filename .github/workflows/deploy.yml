@@ -26,7 +26,7 @@ jobs:
 
       - run: touch dist/.assetsignore
 
-      - uses: cloudflare/wrangler-action@9ce92a4c2e7c109e2ec7a47de11f69a05da85271 # v3
+      - uses: cloudflare/wrangler-action@da0e0245e6f40f5f2d978c7d56c153c0e050457b # v3.14.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
