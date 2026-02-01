@@ -18,7 +18,8 @@ const { Content } = await post.render();
 
 const { title, date, dek, ogImage } = post.data;
 const description = post.data.description || getExcerpt(post.body, 150);
-const ogImageSrc = ogImage?.src;
+const slug = post.id.replace(/\.md$/, '');
+const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
 ---
 
 <Layout title={title} description={description} ogImage={ogImageSrc} date={date}>

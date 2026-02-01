@@ -11,7 +11,7 @@ const posts = (await getCollection('posts')).sort(
 );
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Layout title={SITE_TITLE} description={SITE_DESCRIPTION} ogImage="/og/index.png">
   <div class="prose mx-auto lg:prose-lg">
     <div class="not-prose">
       {
