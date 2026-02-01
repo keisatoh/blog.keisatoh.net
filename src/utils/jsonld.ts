@@ -1,12 +1,5 @@
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR_NAME } from '../../config';
-
-type BlogPostingParams = {
-  title: string;
-  description: string;
-  date: string;
-  url: string;
-  image?: string;
-};
+import type { BlogPostingParams } from '../types';
 
 export function generateBlogPostingSchema(params: BlogPostingParams) {
   return {
