@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        gray: '#888888',
+        gray: '#737373',
       },
       typography: (theme: (path: string) => string) => ({
         DEFAULT: {
