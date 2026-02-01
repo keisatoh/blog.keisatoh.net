@@ -1,33 +1,50 @@
 import satori from 'satori';
 import sharp from 'sharp';
-import { SITE_TITLE, AUTHOR_NAME } from '../../config';
+import { OG_IMAGE_CONFIG } from '../../config';
 
-const OG_WIDTH = 1200;
-const OG_HEIGHT = 630;
-
-const NOTO_SANS_JP_REGULAR_URL =
-  'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-400-normal.woff';
-const NOTO_SANS_JP_BOLD_URL =
-  'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-700-normal.woff';
+const { width: OG_WIDTH, height: OG_HEIGHT, fonts, styles } = OG_IMAGE_CONFIG;
 
 let fontRegular: ArrayBuffer | null = null;
 let fontBold: ArrayBuffer | null = null;
 
-async function loadFonts() {
-  if (!fontRegular) {
-    fontRegular = await fetch(NOTO_SANS_JP_REGULAR_URL).then((res) =>
-      res.arrayBuffer()
+class FontLoadError extends Error {
+  constructor(
+    fontName: string,
+    public readonly cause?: unknown
+  ) {
+    super(`Failed to load font: ${fontName}`);
+    this.name = 'FontLoadError';
+  }
+}
+
+async function fetchFont(url: string, fontName: string): Promise<ArrayBuffer> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new FontLoadError(
+      fontName,
+      `HTTP ${response.status}: ${response.statusText}`
     );
   }
+  return response.arrayBuffer();
+}
+
+async function loadFonts(): Promise<{
+  fontRegular: ArrayBuffer;
+  fontBold: ArrayBuffer;
+}> {
+  if (!fontRegular) {
+    fontRegular = await fetchFont(fonts.regular, `${fonts.family} Regular`);
+  }
   if (!fontBold) {
-    fontBold = await fetch(NOTO_SANS_JP_BOLD_URL).then((res) =>
-      res.arrayBuffer()
-    );
+    fontBold = await fetchFont(fonts.bold, `${fonts.family} Bold`);
   }
   return { fontRegular, fontBold };
 }
 
-export async function generateOgImage(title: string, date?: string): Promise<Buffer> {
+export async function generateOgImage(
+  title: string,
+  date?: string
+): Promise<Buffer> {
   const { fontRegular, fontBold } = await loadFonts();
 
   const formattedDate = date
@@ -37,6 +54,11 @@ export async function generateOgImage(title: string, date?: string): Promise<Buf
         day: 'numeric',
       })
     : '';
+
+  const titleFontSize =
+    title.length > styles.titleThreshold
+      ? styles.titleFontSize.long
+      : styles.titleFontSize.default;
 
   const svg = await satori(
     {
@@ -48,9 +70,9 @@ export async function generateOgImage(title: string, date?: string): Promise<Buf
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '80px',
-          background: '#ffffff',
-          fontFamily: 'Noto Sans JP',
+          padding: `${styles.padding}px`,
+          background: styles.background,
+          fontFamily: fonts.family,
         },
         children: [
           {
@@ -66,9 +88,9 @@ export async function generateOgImage(title: string, date?: string): Promise<Buf
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: title.length > 20 ? '44px' : '52px',
+                      fontSize: `${titleFontSize}px`,
                       fontWeight: 400,
-                      color: '#1f2778',
+                      color: styles.textColor,
                       lineHeight: 1.4,
                       letterSpacing: '-0.02em',
                     },
@@ -81,7 +103,7 @@ export async function generateOgImage(title: string, date?: string): Promise<Buf
                     style: {
                       fontSize: '18px',
                       fontWeight: 400,
-                      color: '#1f2778',
+                      color: styles.textColor,
                       letterSpacing: '0.05em',
                     },
                     children: formattedDate,
@@ -98,13 +120,13 @@ export async function generateOgImage(title: string, date?: string): Promise<Buf
       height: OG_HEIGHT,
       fonts: [
         {
-          name: 'Noto Sans JP',
+          name: fonts.family,
           data: fontRegular,
           weight: 400,
           style: 'normal',
         },
         {
-          name: 'Noto Sans JP',
+          name: fonts.family,
           data: fontBold,
           weight: 700,
           style: 'normal',
