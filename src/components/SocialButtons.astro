@@ -14,7 +14,7 @@
 </div>
 <script is:inline>
   // Twitter公式ドキュメントのスニペット: https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-  window.twttr = (function (d, s, id) {
+  window.twttr = ((d, s, id) => {
     var js,
       fjs = d.getElementsByTagName(s)[0],
       t = window.twttr || {};
@@ -25,7 +25,7 @@
     fjs.parentNode.insertBefore(js, fjs);
 
     t._e = [];
-    t.ready = function (f) {
+    t.ready = (f) => {
       t._e.push(f);
     };
 
