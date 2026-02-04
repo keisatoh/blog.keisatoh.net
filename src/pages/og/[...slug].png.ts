@@ -1,11 +1,11 @@
-import type { APIRoute, GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
-import { generateOgImage } from "../../utils/ogImage";
+import { getCollection } from 'astro:content';
+import type { APIRoute, GetStaticPaths } from 'astro';
+import { generateOgImage } from '../../utils/ogImage';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCollection("posts");
+  const posts = await getCollection('posts');
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, "") },
+    params: { slug: post.id.replace(/\.md$/, '') },
     props: { title: post.data.title, date: post.data.date },
   }));
 };
@@ -16,8 +16,8 @@ export const GET: APIRoute = async ({ props }) => {
 
   return new Response(png, {
     headers: {
-      "Content-Type": "image/png",
-      "Cache-Control": "public, max-age=31536000, immutable",
+      'Content-Type': 'image/png',
+      'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });
 };
