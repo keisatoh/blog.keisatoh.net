@@ -4,14 +4,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from '../../config';
-
-type BlogPostingParams = {
-  title: string;
-  description: string;
-  date: string;
-  url: string;
-  image?: string;
-};
+import type { BlogPostingParams } from '../types';
 
 export function generateBlogPostingSchema(params: BlogPostingParams) {
   return {
