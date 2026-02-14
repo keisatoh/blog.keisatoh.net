@@ -10,7 +10,7 @@ let fontBold: ArrayBuffer | null = null;
 class FontLoadError extends Error {
   constructor(
     fontName: string,
-    public readonly cause?: unknown
+    public readonly cause?: unknown,
   ) {
     super(`Failed to load font: ${fontName}`);
     this.name = 'FontLoadError';
@@ -22,7 +22,7 @@ async function fetchFont(url: string, fontName: string): Promise<ArrayBuffer> {
   if (!response.ok) {
     throw new FontLoadError(
       fontName,
-      `HTTP ${response.status}: ${response.statusText}`
+      `HTTP ${response.status}: ${response.statusText}`,
     );
   }
   return response.arrayBuffer();
@@ -43,7 +43,7 @@ async function loadFonts(): Promise<{
 
 export async function generateOgImage(
   title: string,
-  date?: string
+  date?: string,
 ): Promise<Buffer> {
   const { fontRegular, fontBold } = await loadFonts();
 
@@ -132,7 +132,7 @@ export async function generateOgImage(
           style: 'normal',
         },
       ],
-    }
+    },
   );
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
