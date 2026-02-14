@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
+import { SITE_TITLE } from '../../../config';
 import { generateOgImage } from '../../utils/ogImage';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../../config';
 
 export const GET: APIRoute = async () => {
   const png = await generateOgImage(SITE_TITLE);

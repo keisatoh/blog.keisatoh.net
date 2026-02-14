@@ -1,11 +1,14 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
 import critters from 'astro-critters';
 
 export default defineConfig({
   site: 'https://blog.keisatoh.net',
-  integrations: [tailwind(), sitemap(), critters()],
+  integrations: [sitemap(), critters()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   image: {
     experimentalLayout: 'responsive',
     defaultFormat: 'avif',
