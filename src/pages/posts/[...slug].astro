@@ -1,14 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import GoBackButton from '../../components/GoBackButton.astro';
-import SocialButtons from '../../components/SocialButtons.astro';
-import { getExcerpt } from '../../utils';
-import Layout from '../../layouts/Layout.astro';
+
+import { getCollection } from "astro:content";
+import GoBackButton from "../../components/GoBackButton.astro";
+import SocialButtons from "../../components/SocialButtons.astro";
+import { getExcerpt } from "../../utils";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, '') },
+    params: { slug: post.id.replace(/\.md$/, "") },
     props: { post },
   }));
 }
@@ -18,21 +19,26 @@ const { Content } = await post.render();
 
 const { title, date, dek, ogImage } = post.data;
 const description = post.data.description || getExcerpt(post.body, 150);
-const slug = post.id.replace(/\.md$/, '');
+const slug = post.id.replace(/\.md$/, "");
 const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
 ---
 
-<Layout title={title} description={description} ogImage={ogImageSrc} date={date}>
+<Layout
+  title={title}
+  description={description}
+  ogImage={ogImageSrc}
+  date={date}
+>
   <article
-    class="prose mx-auto prose-p:tracking-tighter prose-a:break-all hover:prose-a:text-indigo-700 lg:prose-lg"
+    class="prose prose-p:tracking-tighter prose-a:break-all hover:prose-a:text-indigo-700 lg:prose-lg mx-auto"
   >
     <div class="not-prose">
-      <time datetime={date} class="text-sm text-gray">
+      <time datetime={date} class="text-gray text-sm">
         {
-          new Date(date).toLocaleDateString('ja-JP', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
+          new Date(date).toLocaleDateString("ja-JP", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
           })
         }
       </time>
@@ -40,7 +46,7 @@ const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
         {title}
       </h1>
       <div
-        class="mt-2 text-lg font-light tracking-tight text-gray md:mt-6 md:text-xl"
+        class="text-gray mt-2 text-lg font-light tracking-tight md:mt-6 md:text-xl"
       >
         {dek}
       </div>

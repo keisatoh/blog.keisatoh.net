@@ -14,23 +14,23 @@
 </div>
 <script is:inline>
   // Twitter公式ドキュメントのスニペット: https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-  window.twttr = (function (d, s, id) {
+  window.twttr = ((d, s, id) => {
     var js,
       fjs = d.getElementsByTagName(s)[0],
       t = window.twttr || {};
     if (d.getElementById(id)) return t;
     js = d.createElement(s);
     js.id = id;
-    js.src = 'https://platform.twitter.com/widgets.js';
+    js.src = "https://platform.twitter.com/widgets.js";
     fjs.parentNode.insertBefore(js, fjs);
 
     t._e = [];
-    t.ready = function (f) {
+    t.ready = (f) => {
       t._e.push(f);
     };
 
     return t;
-  })(document, 'script', 'twitter-wjs');
+  })(document, "script", "twitter-wjs");
 </script>
 
 <script
@@ -44,5 +44,4 @@
   data-text="Buy me a coffee"
   data-outline-color="#000000"
   data-font-color="#000000"
-  data-coffee-color="#ffffff"
-></script>
+  data-coffee-color="#ffffff"></script>

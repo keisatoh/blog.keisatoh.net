@@ -1,4 +1,9 @@
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR_NAME } from '../../config';
+import {
+  AUTHOR_NAME,
+  SITE_DESCRIPTION,
+  SITE_TITLE,
+  SITE_URL,
+} from '../../config';
 import type { BlogPostingParams } from '../types';
 
 export function generateBlogPostingSchema(params: BlogPostingParams) {
