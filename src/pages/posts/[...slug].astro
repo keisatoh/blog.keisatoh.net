@@ -1,10 +1,11 @@
 ---
 
-import { getCollection } from "astro:content";
-import GoBackButton from "../../components/GoBackButton.astro";
-import SocialButtons from "../../components/SocialButtons.astro";
-import { getExcerpt } from "../../utils";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import GoBackButton from '../../components/GoBackButton.astro';
+import SocialButtons from '../../components/SocialButtons.astro';
+import { getExcerpt } from '../../utils';
+import { formatDate } from '../../utils/date';
+import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -34,13 +35,7 @@ const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
   >
     <div class="not-prose">
       <time datetime={date} class="text-gray text-sm">
-        {
-          new Date(date).toLocaleDateString("ja-JP", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          })
-        }
+        {formatDate(date)}
       </time>
       <h1 class="mt-1 text-3xl font-normal text-black md:text-5xl">
         {title}
