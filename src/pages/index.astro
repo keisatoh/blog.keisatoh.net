@@ -17,6 +17,7 @@ const posts = (await getCollection('posts')).sort(
   ogImage="/og/index.png"
 >
   <div class="prose lg:prose-lg mx-auto">
+    <h1 class="sr-only">Posts</h1>
     <div class="not-prose">
       {
         posts.map((post) => (
