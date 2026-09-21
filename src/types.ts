@@ -22,4 +22,4 @@ type BlogPostingParams = {
   image?: string;
 };
 
-export type { Meta, ArticleMeta, HomeMeta, BlogPostingParams };
+export type { ArticleMeta, BlogPostingParams, HomeMeta, Meta };
