@@ -76,8 +76,6 @@ describe('getExcerpt', () => {
   });
 
   test('removes Markdown images', () => {
-    expect(getExcerpt('![alt text](image.avif) Article text', 100)).toBe(
-      'Article text',
-    );
+    expect(getExcerpt('![alt text](image.avif) Article text', 100)).toBe('Article text');
   });
 });

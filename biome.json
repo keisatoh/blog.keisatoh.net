@@ -11,19 +11,18 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "includes": ["**/*.astro"]
   },
   "linter": {
     "enabled": true,
+    "includes": ["**/*.astro"],
     "rules": {
-      "recommended": true,
-      "style": {
-        "noNonNullAssertion": "off"
-      },
-      "suspicious": {
-        "noImplicitAnyLet": "off"
-      }
+      "recommended": false
     }
+  },
+  "assist": {
+    "enabled": false
   },
   "javascript": {
     "formatter": {
@@ -37,33 +36,5 @@
   },
   "html": {
     "experimentalFullSupportEnabled": true
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.astro"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noUnusedVariables": "off",
-            "noUnusedImports": "off"
-          }
-        }
-      },
-      "assist": {
-        "actions": {
-          "source": {
-            "organizeImports": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

@@ -20,10 +20,7 @@ class FontLoadError extends Error {
 async function fetchFont(url: string, fontName: string): Promise<ArrayBuffer> {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new FontLoadError(
-      fontName,
-      `HTTP ${response.status}: ${response.statusText}`,
-    );
+    throw new FontLoadError(fontName, `HTTP ${response.status}: ${response.statusText}`);
   }
   return response.arrayBuffer();
 }
@@ -41,10 +38,7 @@ async function loadFonts(): Promise<{
   return { fontRegular, fontBold };
 }
 
-export async function generateOgImage(
-  title: string,
-  date?: string,
-): Promise<Buffer> {
+export async function generateOgImage(title: string, date?: string): Promise<Buffer> {
   const { fontRegular, fontBold } = await loadFonts();
 
   const formattedDate = date
@@ -56,9 +50,7 @@ export async function generateOgImage(
     : '';
 
   const titleFontSize =
-    title.length > styles.titleThreshold
-      ? styles.titleFontSize.long
-      : styles.titleFontSize.default;
+    title.length > styles.titleThreshold ? styles.titleFontSize.long : styles.titleFontSize.default;
 
   const svg = await satori(
     {

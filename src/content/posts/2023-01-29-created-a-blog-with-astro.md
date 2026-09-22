@@ -1,8 +1,8 @@
 ---
-title: "Astroでブログをつくった"
-date: "2023-01-29"
-description: "Astro + Tailwind CSSでブログを作成した。Astroでブログを作成するのは、ずいぶん楽で、おすすめできる。"
-dek: "たのしい＼(^o^)／"
+title: 'Astroでブログをつくった'
+date: '2023-01-29'
+description: 'Astro + Tailwind CSSでブログを作成した。Astroでブログを作成するのは、ずいぶん楽で、おすすめできる。'
+dek: 'たのしい＼(^o^)／'
 ---
 
 昨年末にコロナウイルスに感染し、名古屋のホテルで療養していた。体調が良くなってきたころ、ホテルの小さな机の上でAstroを触り始め、楽しくなってブログを作った。
@@ -16,7 +16,9 @@ dek: "たのしい＼(^o^)／"
 ## 使用技術
 
 ### Astro
+
 フレームワークはAstroを採用した。使ってみたかった。
+
 > Astroは、コンテンツにフォーカスした高速なWebサイトを構築するためのオールインワンWebフレームワークです。
 > [はじめに 🚀 Astroドキュメント](https://docs.astro.build/ja/getting-started/)
 
@@ -40,11 +42,12 @@ const posts = await Astro.glob('../pages/post/*.md');
 ))}
 </div>
 ```
+
 Astroコンポーネントは、`---`に囲まれたコンポーネントスクリプトと、その下のコンポーネントテンプレートによって構成される。スクリプト部はTypeScriptが書けるし、テンプレート部はJSXのような記法が使える（プレーンなHTMLを書くこともできる）。
 特有のくせがなく、それでいて欲しいメソッドは充実していて（ここでいう`Astro.glob`）、ドキュメントを読めばだいたい全部わかるのがうれしい。
 
-
 ### Tailwind CSS
+
 CSSはTailwind CSSで書いた。最近は、学校の課題や個人でなにかを作るとき、ほぼ毎度Tailwindを使用している。デザインを試行錯誤しながらスタイリングするときにも、ストレスが少ないのがいい（今回デザインカンプは作っていない）。
 
 記事本文のスタイリングには[@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)を採用した。
@@ -60,11 +63,13 @@ Markdownファイルのフロントマターには`layout`プロパティがあ�
 @tailwindcss/typographyを使うと、`prose`クラスを振るだけで、読みやすい文章になるようよしなにスタイリングしてくれる。カスタマイズすることもできるけど、現状はほぼデフォルトのまま使用している。
 
 ### Cloudflare Pages + Imgur
+
 デプロイ先にはCloudflare Pagesを選んだ。昨年、NuxtでSSGしたサイトをデプロイした時にパフォーマンスが良かったのと、当時比較検討した結果、無料プランでできることの幅がもっとも広かったため。たとえば、商用利用ができる。無料（Hobby）アカウントの[ポリシー](https://vercel.com/docs/concepts/limits/fair-use-policy#commercial-usage)によって「非営利の個人使用のみ」と定められているVercelと比べて、Amazonなどのアフィリエイトリンクを貼りやすいと思う。また、このサイトのドメインがCloudflareで取得・管理されているので一元化できる利点もある。
 
 画像はリポジトリ内ではなく外部に置きたかったので、[Imgur](https://imgur.com/)へアップロードすることにした。アップロードすると同時にEXIFを消してくれたり、WebP画像も生成してくれるので、手軽に運用できそう。アップロード先の選択肢には[Gyazo](https://gyazo.com/ja)も上がったが、前述の機能が無料で使えるImgurに軍配が上がった。
 
 ## （ちょっとだけ）工夫したところ
+
 ちょっとだけ工夫した点として、`dek`プロパティの存在がある。
 
 まず、[The Verge](https://www.theverge.com/)にみられるような、タイトル下の短い文章をつけたいと思った。[これはdekと呼ばれるらしい](https://underthecurve.github.io/jekyll/update/2016/12/29/hed-dek-led-graf.html)。たしかに、WIREDやCNETのソースを覗くと、それらしき名前のクラスが振られている。
@@ -76,9 +81,7 @@ Markdownファイルのフロントマターには`layout`プロパティがあ�
 ```ts
 const getExcerpt = (html: string, excerptLength: number) => {
   const removeHTMLTags = (html) => {
-    return html
-      .replace(/\r?\n/g, ' ')
-      .replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
+    return html.replace(/\r?\n/g, ' ').replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '');
   };
   const plainText = removeHTMLTags(html);
 
@@ -92,7 +95,6 @@ const getExcerpt = (html: string, excerptLength: number) => {
 
 dekとの論理演算を除けば、はてなブログやnoteなどの多くのブログサービスにみられるポピュラーな実装だと思う。さきほどの関数は、まさにはてなブログっぽさを意識している。
 
-
 ## さいごに
-気に入ったのでしばらくの間Astroを触っていくし、Astroの話をよくすると思います。
 
+気に入ったのでしばらくの間Astroを触っていくし、Astroの話をよくすると思います。

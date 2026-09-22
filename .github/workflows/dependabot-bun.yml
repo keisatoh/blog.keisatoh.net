@@ -3,7 +3,7 @@ name: Update bun.lockb for Dependabot PRs
 on:
   pull_request:
     paths:
-      - "package.json"
+      - 'package.json'
 
 permissions:
   contents: write
