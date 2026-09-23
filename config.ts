@@ -3,13 +3,14 @@ export const SITE_DESCRIPTION = 'keisatohのブログ';
 export const SITE_URL = 'https://blog.keisatoh.net';
 export const AUTHOR_NAME = 'keisatoh';
 
+const NOTO_SANS_JP_VERSION = '5.3.0';
+
 export const OG_IMAGE_CONFIG = {
   width: 1200,
   height: 630,
   fonts: {
-    regular:
-      'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-400-normal.woff',
-    bold: 'https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@latest/japanese-700-normal.woff',
+    regular: `https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@${NOTO_SANS_JP_VERSION}/japanese-400-normal.woff`,
+    bold: `https://cdn.jsdelivr.net/fontsource/fonts/noto-sans-jp@${NOTO_SANS_JP_VERSION}/japanese-700-normal.woff`,
     family: 'Noto Sans JP',
   },
   styles: {
