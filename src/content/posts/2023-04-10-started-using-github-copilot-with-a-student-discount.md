@@ -1,9 +1,9 @@
 ---
-title: '学割でGitHub Copilotを使い始めた'
-date: '2023-04-10'
-description: '学割を利用して、GitHub Copilotを使い始めた。その登録方法のメモ。'
-dek: 'いかれた使い心地'
-ogImage: '../../assets/posts/copilot/RdfrUBM.avif'
+title: "学割でGitHub Copilotを使い始めた"
+date: "2023-04-10"
+description: "学割を利用して、GitHub Copilotを使い始めた。その登録方法のメモ。"
+dek: "いかれた使い心地"
+ogImage: "../../assets/posts/copilot/RdfrUBM.avif"
 ---
 
 新年度が始まり、最初のホームルームがあり、今年度用の学生証を受け取ってすぐ、嬉々としてGitHubのGitHub Global Campusに登録した。これにより受け取れるGitHub Student Developer Packのなかに、GitHub Copilotの無料サブスクリプションがあるためです。
@@ -11,10 +11,9 @@ ogImage: '../../assets/posts/copilot/RdfrUBM.avif'
 登録からGitHub Copilotを利用できるまでにかかった時間は、約10分と短い。いちおう、登録方法を簡単に置いておく。
 
 ## 登録方法
-
 ![GitHub Global Campusの登録画面](../../assets/posts/copilot/igfB9os.avif)
 
-[https://education.github.com/benefits](https://education.github.com/benefits)にアクセスして、'Get student benefits'に進む。
+[https://education.github.com/benefits](https://education.github.com/benefits )にアクセスして、'Get student benefits'に進む。
 
 ![GitHub Global Campusの登録画面](../../assets/posts/copilot/tyh8er6.avif)
 
@@ -37,6 +36,6 @@ ogImage: '../../assets/posts/copilot/RdfrUBM.avif'
 ![VS Codeの拡張機能ダウンロード画面](../../assets/posts/copilot/zkNXsx0.avif)
 最後にVS CodeでGitHub Copilotのエクステンションをインストールしておしまい。はじめてCopilotがうごいたとき、思わず「おぉ...」と声を上げた。
 
-参考
 
+参考
 - https://docs.github.com/ja/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student
