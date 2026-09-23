@@ -16,8 +16,8 @@ export async function GET(context: APIContext) {
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: new Date(post.data.date),
-      description: post.data.description || getExcerpt(post.body, 150),
-      link: `/posts/${post.id.replace(/\.md$/, '')}/`,
+      description: post.data.description || getExcerpt(post.body ?? '', 150),
+      link: `/posts/${post.id}/`,
     })),
   });
 }
