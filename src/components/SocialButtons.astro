@@ -13,12 +13,23 @@ shareLink.searchParams.set('url', shareUrl.toString());
 
 <div class="flex items-center justify-center gap-3">
   <a
-    class="inline-block rounded-lg border border-slate-400 bg-white px-5 py-1 text-center text-xs font-medium text-gray-900 outline-none ring-slate-400 transition duration-200 hover:bg-gray-100 hover:text-indigo-700 focus-visible:ring-2 active:bg-gray-200 sm:text-sm"
+    class="inline-flex h-8 items-center gap-1.5 rounded-full bg-black px-4 py-1 text-xs font-semibold leading-none text-white outline-none transition-colors hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 active:bg-slate-900"
     href={shareLink}
     target="_blank"
     rel="noopener noreferrer"
-    >Xでシェア</a
-  >
+    aria-label="Xでポスト"
+    >
+    <svg
+      aria-hidden="true"
+      class="h-3.5 w-3.5 shrink-0 fill-current"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.963 6.817H1.684l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+      />
+    </svg>
+    <span>ポスト</span>
+  </a>
   <a
     href="https://www.buymeacoffee.com/keisatoh"
     target="_blank"
