@@ -1,52 +1,29 @@
-<div class="flex items-center justify-center justify-items-center">
+---
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+const shareUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const shareLink = new URL('https://twitter.com/intent/tweet');
+shareLink.searchParams.set('text', title);
+shareLink.searchParams.set('url', shareUrl.toString());
+---
+
+<div class="flex items-center justify-center gap-3">
   <a
-    class="twitter-share-button"
-    href="https://twitter.com/intent/tweet"
-    aria-label="この記事をTwitterでシェア"
-    data-size="large">ツイート</a
+    class="inline-block rounded-lg border border-slate-400 bg-white px-5 py-1 text-center text-xs font-medium text-gray-900 outline-none ring-slate-400 transition duration-200 hover:bg-gray-100 hover:text-indigo-700 focus-visible:ring-2 active:bg-gray-200 sm:text-sm"
+    href={shareLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    >Xでシェア</a
   >
   <a
     href="https://www.buymeacoffee.com/keisatoh"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Buy me a coffee"
-    ><img
-      src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-      alt="Buy Me A Coffee"
-      class="!my-0 ml-3 h-9"
-    /></a
+    class="inline-block rounded-lg border border-yellow-500 bg-yellow-300 px-5 py-1 text-center text-xs font-medium text-gray-900 outline-none ring-yellow-600 transition duration-200 hover:bg-yellow-200 focus-visible:ring-2 active:bg-yellow-400 sm:text-sm"
+    >Buy Me a Coffee</a
   >
 </div>
-<script is:inline>
-  // Twitter公式ドキュメントのスニペット: https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-  window.twttr = ((d, s, id) => {
-    var js,
-      fjs = d.getElementsByTagName(s)[0],
-      t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
-
-    t._e = [];
-    t.ready = (f) => {
-      t._e.push(f);
-    };
-
-    return t;
-  })(document, "script", "twitter-wjs");
-</script>
-
-<script
-  type="text/javascript"
-  src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-  data-name="bmc-button"
-  data-slug="keisatoh"
-  data-color="#FFDD00"
-  data-emoji=""
-  data-font="Cookie"
-  data-text="Buy me a coffee"
-  data-outline-color="#000000"
-  data-font-color="#000000"
-  data-coffee-color="#ffffff"></script>
