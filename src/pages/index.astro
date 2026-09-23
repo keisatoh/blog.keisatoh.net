@@ -7,7 +7,7 @@ import { formatDate } from '../utils/date';
 import Layout from '../layouts/Layout.astro';
 
 const posts = (await getCollection('posts')).sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 ---
 
@@ -22,11 +22,11 @@ const posts = (await getCollection('posts')).sort(
       {
         posts.map((post) => (
           <article class="[&:nth-child(n+2)]:mt-10">
-            <time datetime={post.data.date} class="text-gray text-sm">
+            <time datetime={post.data.date.toISOString()} class="text-gray text-sm">
               {formatDate(post.data.date)}
             </time>
             <h2 class="mt-1 text-xl font-normal text-black hover:text-indigo-700 sm:mt-2 sm:text-3xl">
-              <a href={`/posts/${post.id.replace(/\.md$/, "")}/`}>
+              <a href={`/posts/${post.id}/`}>
                 {post.data.title}
               </a>
             </h2>

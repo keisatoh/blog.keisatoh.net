@@ -1,6 +1,7 @@
 import satori from 'satori';
 import sharp from 'sharp';
 import { OG_IMAGE_CONFIG } from '../../config';
+import { formatDate } from './date';
 
 const { width: OG_WIDTH, height: OG_HEIGHT, fonts, styles } = OG_IMAGE_CONFIG;
 
@@ -38,16 +39,10 @@ async function loadFonts(): Promise<{
   return { fontRegular, fontBold };
 }
 
-export async function generateOgImage(title: string, date?: string): Promise<Buffer> {
+export async function generateOgImage(title: string, date?: Date): Promise<Buffer> {
   const { fontRegular, fontBold } = await loadFonts();
 
-  const formattedDate = date
-    ? new Date(date).toLocaleDateString('ja-JP', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      })
-    : '';
+  const formattedDate = date ? formatDate(date) : '';
 
   const titleFontSize =
     title.length > styles.titleThreshold ? styles.titleFontSize.long : styles.titleFontSize.default;
