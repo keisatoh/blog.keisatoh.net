@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../config';
+import { getExcerpt } from '../utils';
 
 export async function GET(context: APIContext) {
   const posts = (await getCollection('posts')).sort(
@@ -15,8 +16,8 @@ export async function GET(context: APIContext) {
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: new Date(post.data.date),
-      description: post.data.description || '',
-      link: `/posts/${post.id.replace(/\.md$/, '')}/`,
+      description: post.data.description || getExcerpt(post.body ?? '', 150),
+      link: `/posts/${post.id}/`,
     })),
   });
 }
