@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.14/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -11,12 +11,14 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "includes": ["**/*.astro"]
   },
   "linter": {
     "enabled": true,
+    "includes": ["**/*.astro"],
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "style": {
         "noNonNullAssertion": "off"
       },
@@ -24,6 +26,9 @@
         "noImplicitAnyLet": "off"
       }
     }
+  },
+  "assist": {
+    "enabled": false
   },
   "javascript": {
     "formatter": {
@@ -38,14 +43,6 @@
   "html": {
     "experimentalFullSupportEnabled": true
   },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
   "overrides": [
     {
       "includes": ["**/*.astro"],
@@ -54,13 +51,6 @@
           "correctness": {
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
-          }
-        }
-      },
-      "assist": {
-        "actions": {
-          "source": {
-            "organizeImports": "off"
           }
         }
       }

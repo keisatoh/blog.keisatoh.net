@@ -74,4 +74,8 @@ describe('getExcerpt', () => {
   test('handles input with only HTML tags', () => {
     expect(getExcerpt('<div><span></span></div>', 100)).toBe('');
   });
+
+  test('removes Markdown images', () => {
+    expect(getExcerpt('![alt text](image.avif) Article text', 100)).toBe('Article text');
+  });
 });

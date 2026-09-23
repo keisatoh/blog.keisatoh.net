@@ -14,7 +14,7 @@ export const GET: APIRoute = async ({ props }) => {
   const { title, date } = props as { title: string; date: string };
   const png = await generateOgImage(title, date);
 
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable',

@@ -10,8 +10,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   image: {
-    experimentalLayout: 'responsive',
-    defaultFormat: 'avif',
+    layout: 'constrained',
+    responsiveStyles: true,
   },
   markdown: {
     shikiConfig: {
