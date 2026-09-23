@@ -6,7 +6,7 @@ export type Props = {
 
 const { title } = Astro.props;
 const shareUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-const shareLink = new URL('https://twitter.com/intent/tweet');
+const shareLink = new URL('https://x.com/intent/post');
 shareLink.searchParams.set('text', title);
 shareLink.searchParams.set('url', shareUrl.toString());
 ---
@@ -23,7 +23,12 @@ shareLink.searchParams.set('url', shareUrl.toString());
     href="https://www.buymeacoffee.com/keisatoh"
     target="_blank"
     rel="noopener noreferrer"
-    class="inline-block rounded-lg border border-yellow-500 bg-yellow-300 px-5 py-1 text-center text-xs font-medium text-gray-900 outline-none ring-yellow-600 transition duration-200 hover:bg-yellow-200 focus-visible:ring-2 active:bg-yellow-400 sm:text-sm"
-    >Buy Me a Coffee</a
-  >
+    aria-label="Buy Me a Coffee"
+    >
+    <img
+      src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+      alt="Buy Me a Coffee"
+      class="!my-0 h-9"
+    />
+  </a>
 </div>
