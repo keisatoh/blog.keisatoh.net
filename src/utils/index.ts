@@ -46,9 +46,7 @@ function stripHtmlTags(html: string): string {
 }
 
 export function getExcerpt(html: string, excerptLength: number): string {
-  const plainText = decodeHtmlEntities(
-    stripHtmlTags(html.replace(/!\[[^\]]*\]\([^)]*\)/g, '')),
-  );
+  const plainText = decodeHtmlEntities(stripHtmlTags(html.replace(/!\[[^\]]*\]\([^)]*\)/g, '')));
   const excerpt = plainText.slice(0, excerptLength);
   return excerptLength < plainText.length ? `${excerpt}\u2026` : excerpt;
 }
