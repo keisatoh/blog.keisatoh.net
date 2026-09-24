@@ -34,7 +34,7 @@ const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
     class="prose prose-p:tracking-tighter prose-a:break-all hover:prose-a:text-indigo-700 lg:prose-lg mx-auto"
   >
     <div class="not-prose">
-      <time datetime={date} class="text-gray text-sm">
+      <time datetime={date.toISOString()} class="text-gray text-sm">
         {formatDate(date)}
       </time>
       <h1 class="mt-1 text-3xl font-normal text-black md:text-5xl">

@@ -8,7 +8,7 @@ export function generateBlogPostingSchema(params: BlogPostingParams) {
     headline: params.title,
     description: params.description,
     ...(params.image ? { image: params.image } : {}),
-    datePublished: params.date,
+    datePublished: params.date.toISOString(),
     author: {
       '@type': 'Person',
       name: AUTHOR_NAME,

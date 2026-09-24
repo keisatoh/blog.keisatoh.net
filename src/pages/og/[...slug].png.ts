@@ -11,7 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const GET: APIRoute = async ({ props }) => {
-  const { title, date } = props as { title: string; date: string };
+  const { title, date } = props as { title: string; date: Date };
   const png = await generateOgImage(title, date);
 
   return new Response(new Uint8Array(png), {
