@@ -27,8 +27,14 @@ const { title, description, ogImage, date } = Astro.props as Props;
   </head>
   <!-- flexは、コンテンツ量が少ないときのフッター最下部固定のため -->
   <body class="flex min-h-screen flex-col px-3 py-6">
+    <a
+      href="#main-content"
+      class="sr-only rounded-md bg-white px-3 py-2 text-sm text-gray-900 shadow focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50"
+    >
+      本文へ移動
+    </a>
     <Header title={SITE_TITLE} />
-    <main class="mt-10 flex-auto">
+    <main id="main-content" class="mt-10 flex-auto">
       <slot />
     </main>
     <Footer />
