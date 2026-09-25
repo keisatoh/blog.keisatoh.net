@@ -19,7 +19,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const { title, date, dek, ogImage } = post.data;
-const description = post.data.description || getExcerpt(post.body ?? '', 150);
+const description = post.data.description || getExcerpt(post.rendered?.html ?? '', 150);
 const slug = post.id;
 const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
 ---
