@@ -1,5 +1,6 @@
-export function formatDate(date: string | Date): string {
-  return new Date(date).toLocaleDateString('ja-JP', {
+export function formatDate(date: Date): string {
+  return date.toLocaleDateString('ja-JP', {
+    timeZone: 'UTC',
     year: 'numeric',
     month: 'short',
     day: 'numeric',

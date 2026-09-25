@@ -6,7 +6,7 @@ describe('generateBlogPostingSchema', () => {
     const result = generateBlogPostingSchema({
       title: 'Test Post',
       description: 'A test description',
-      date: '2024-01-15',
+      date: new Date('2024-01-15T00:00:00Z'),
       url: 'https://blog.keisatoh.net/posts/test-post',
     });
 
@@ -14,7 +14,7 @@ describe('generateBlogPostingSchema', () => {
     expect(result['@type']).toBe('BlogPosting');
     expect(result.headline).toBe('Test Post');
     expect(result.description).toBe('A test description');
-    expect(result.datePublished).toBe('2024-01-15');
+    expect(result.datePublished).toBe('2024-01-15T00:00:00.000Z');
     expect(result.author).toEqual({
       '@type': 'Person',
       name: 'keisatoh',
@@ -35,7 +35,7 @@ describe('generateBlogPostingSchema', () => {
     const result = generateBlogPostingSchema({
       title: 'Test Post',
       description: 'A test description',
-      date: '2024-01-15',
+      date: new Date('2024-01-15T00:00:00Z'),
       url: 'https://blog.keisatoh.net/posts/test-post',
       image: 'https://blog.keisatoh.net/og/test-post.png',
     });
@@ -47,7 +47,7 @@ describe('generateBlogPostingSchema', () => {
     const result = generateBlogPostingSchema({
       title: 'Test Post',
       description: 'A test description',
-      date: '2024-01-15',
+      date: new Date('2024-01-15T00:00:00Z'),
       url: 'https://blog.keisatoh.net/posts/test-post',
     });
 
