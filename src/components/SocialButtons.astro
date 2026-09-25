@@ -1,52 +1,45 @@
-<div class="flex items-center justify-center justify-items-center">
+---
+
+export type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+const shareUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const shareLink = new URL('https://x.com/intent/tweet');
+shareLink.searchParams.set('text', title);
+shareLink.searchParams.set('url', shareUrl.toString());
+---
+
+<div class="flex items-center justify-center gap-3">
   <a
-    class="twitter-share-button"
-    href="https://twitter.com/intent/tweet"
-    aria-label="この記事をTwitterでシェア"
-    data-size="large">ツイート</a
-  >
+    class="no-underline inline-flex h-8 items-center gap-1.5 rounded-full bg-black px-4 py-1 text-xs font-semibold leading-none text-white outline-none transition-colors hover:bg-slate-800 hover:no-underline focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 active:bg-slate-900"
+    href={shareLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Xでポスト"
+    >
+    <svg
+      aria-hidden="true"
+      class="h-3.5 w-3.5 shrink-0 fill-current"
+      viewBox="0 0 1200 1227"
+    >
+      <path
+        d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
+      />
+    </svg>
+    <span>ポスト</span>
+  </a>
   <a
     href="https://www.buymeacoffee.com/keisatoh"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Buy me a coffee"
-    ><img
+    aria-label="Buy Me a Coffee"
+    >
+    <img
       src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-      alt="Buy Me A Coffee"
-      class="!my-0 ml-3 h-9"
-    /></a
-  >
+      alt="Buy Me a Coffee"
+      class="!my-0 h-9"
+    />
+  </a>
 </div>
-<script is:inline>
-  // Twitter公式ドキュメントのスニペット: https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-  window.twttr = ((d, s, id) => {
-    var js,
-      fjs = d.getElementsByTagName(s)[0],
-      t = window.twttr || {};
-    if (d.getElementById(id)) return t;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://platform.twitter.com/widgets.js";
-    fjs.parentNode.insertBefore(js, fjs);
-
-    t._e = [];
-    t.ready = (f) => {
-      t._e.push(f);
-    };
-
-    return t;
-  })(document, "script", "twitter-wjs");
-</script>
-
-<script
-  type="text/javascript"
-  src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-  data-name="bmc-button"
-  data-slug="keisatoh"
-  data-color="#FFDD00"
-  data-emoji=""
-  data-font="Cookie"
-  data-text="Buy me a coffee"
-  data-outline-color="#000000"
-  data-font-color="#000000"
-  data-coffee-color="#ffffff"></script>
