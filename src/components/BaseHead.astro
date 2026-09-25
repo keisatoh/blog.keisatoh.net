@@ -54,7 +54,7 @@ const jsonLd = date
   isArticle && (
     <meta
       property="article:published_time"
-      content={new Date(date).toISOString()}
+      content={date.toISOString()}
     />
   )
 }

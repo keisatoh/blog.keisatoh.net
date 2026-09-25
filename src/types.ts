@@ -5,7 +5,7 @@ type BaseMeta = {
 };
 
 type ArticleMeta = BaseMeta & {
-  date: string;
+  date: Date;
 };
 
 type HomeMeta = BaseMeta & {
@@ -17,7 +17,7 @@ type Meta = ArticleMeta | HomeMeta;
 type BlogPostingParams = {
   title: string;
   description: string;
-  date: string;
+  date: Date;
   url: string;
   image?: string;
 };

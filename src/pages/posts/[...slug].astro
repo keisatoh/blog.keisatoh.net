@@ -1,6 +1,6 @@
 ---
 
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import GoBackButton from '../../components/GoBackButton.astro';
 import SocialButtons from '../../components/SocialButtons.astro';
 import { getExcerpt } from '../../utils';
@@ -8,19 +8,19 @@ import { formatDate } from '../../utils/date';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection('posts');
   return posts.map((post) => ({
-    params: { slug: post.id.replace(/\.md$/, "") },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const { title, date, dek, ogImage } = post.data;
-const description = post.data.description || getExcerpt(post.body, 150);
-const slug = post.id.replace(/\.md$/, "");
+const description = post.data.description || getExcerpt(post.rendered?.html ?? '', 150);
+const slug = post.id;
 const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
 ---
 
@@ -34,7 +34,7 @@ const ogImageSrc = ogImage?.src ?? `/og/${slug}.png`;
     class="prose prose-p:tracking-tighter prose-a:break-all hover:prose-a:text-indigo-700 lg:prose-lg mx-auto"
   >
     <div class="not-prose">
-      <time datetime={date} class="text-gray text-sm">
+      <time datetime={date.toISOString()} class="text-gray text-sm">
         {formatDate(date)}
       </time>
       <h1 class="mt-1 text-3xl font-normal text-black md:text-5xl">
