@@ -6,21 +6,19 @@ export type Props = {
 
 const { title } = Astro.props;
 const shareUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-const shareLink = new URL('https://x.com/intent/tweet');
-shareLink.searchParams.set('text', title);
-shareLink.searchParams.set('url', shareUrl.toString());
 ---
 
 <div class="flex items-center justify-center gap-3">
-  <a
-    class="no-underline inline-flex h-8 items-center rounded-full bg-black px-4 py-1 text-xs font-normal leading-none !text-white outline-none transition-colors hover:bg-slate-800 hover:no-underline focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 active:bg-slate-900"
-    href={shareLink}
-    target="_blank"
-    rel="noopener noreferrer"
+  <button
+    type="button"
+    class="inline-flex h-8 cursor-pointer items-center rounded-full bg-black px-4 py-1 text-xs font-normal leading-none !text-white outline-none transition-colors hover:bg-slate-800 focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 active:bg-slate-900"
+    data-x-post
+    data-title={title}
+    data-url={shareUrl.toString()}
     aria-label="Xでポスト"
-    >
+  >
     <span>Xでポスト</span>
-  </a>
+  </button>
   <a
     href="https://www.buymeacoffee.com/keisatoh"
     target="_blank"
@@ -34,3 +32,17 @@ shareLink.searchParams.set('url', shareUrl.toString());
     />
   </a>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-x-post]').forEach((button) => {
+    button.addEventListener('click', () => {
+      // Keep the X URL out of the initial markup so content blockers do not
+      // mistake this first-party button for an embedded social widget.
+      const host = ['x', 'com'].join('.');
+      const postUrl = new URL(`https://${host}/intent/tweet`);
+      postUrl.searchParams.set('text', button.dataset.title ?? '');
+      postUrl.searchParams.set('url', button.dataset.url ?? window.location.href);
+      window.open(postUrl, '_blank', 'noopener,noreferrer');
+    });
+  });
+</script>
